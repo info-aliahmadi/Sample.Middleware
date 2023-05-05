@@ -1,3 +1,5 @@
+using Sample.Middleware.Middleware;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,12 +9,35 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+//app.Use(async (ctx, next) =>
+//{
+//    var dateTime = DateTime.UtcNow;
+
+//    await next.Invoke(ctx);
+//    app.Logger.LogInformation($"Request : {ctx.Request.Path}: {DateTime.UtcNow - dateTime}");
+//});
+
+//app.Use((HttpContext ctx, Func<Task> next) =>
+//{
+//    app.Logger.LogInformation("Terminated request.");
+//    return Task.CompletedTask;
+//});
+
+app.UseMiddleware<TimingMiddleware>();
+
+
+
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
+
 
 app.UseHttpsRedirection();
 
@@ -35,6 +60,8 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast")
 .WithOpenApi();
+
+
 
 app.Run();
 

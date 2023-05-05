@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "nI4kxSOKOxZB5l+Zz7PeXk+nbACTHUUwSGysegNdh/k=",
+  "Source": "Sample.Middleware",
+  "BasePath": "_content/Sample.Middleware",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
